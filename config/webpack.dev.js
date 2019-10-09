@@ -6,7 +6,7 @@ const webpackCommonConfig = require('./webpack.common.js');
 
 const webpackDevConfig = {
 	mode: 'development',
-	devtool: 'inline-source-map',
+	devtool: 'cheap-module-eval-souce-map', // source-map 将编译后的代码映射会原始源代码。
 	devServer: {
 		contentBase: '../dist', 
 		compress: true, // 开启Gzip压缩
@@ -17,7 +17,12 @@ const webpackDevConfig = {
 		historyApiFallback: true,
 		hot: true
 
-	}
+	},
+
+	plugins: [
+
+		new webpack.HotModuleReplacementPlugin()
+	]
 }
 
 module.exports = webpackMerge(

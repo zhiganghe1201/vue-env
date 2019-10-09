@@ -3,7 +3,7 @@ const APP_ROOT = process.cwd(); // process.cwd() 返回运行 node 命令时所�
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的引用需要这样
 
 const webpackCommonConfig = {
@@ -41,6 +41,17 @@ const webpackCommonConfig = {
 				test: /\.vue$/,
 				exclude: /node_modules/,
 				use: 'vue-loader'
+			},
+			{
+				test: /\.(png|jpg|gif|eot|ttf|woff|woff2|svg)$/,
+				use: [{
+					loader: 'url-loader',
+					options: {
+						limit: 10240, //// 当图片小于10kb时，使用base64的方式进行打包
+						name: '[path]/[name].[hash:7].[ext]', // 加入hash是避免缓存
+					}
+				}]
+
 			}
 		]
 	},
@@ -51,6 +62,9 @@ const webpackCommonConfig = {
 			template: path.resolve(APP_ROOT, 'src/static/index.tpl.html'),
 			inject: 'body',
 			filename: './index.html'
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			miniChunks: 2
 		})
 	]
 	

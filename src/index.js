@@ -8,6 +8,7 @@ const vm = new Vue({
 	data: {
 		message: 'hello vue'
 	},
+	template: '<App />',
 	components: {
 		App
 	}

@@ -5,6 +5,7 @@ const webpackCommonConfig = require('./webpack.common');
 
 const webpackProdConfig = {
 	mode: 'production',
+	devtool: 'cheap-module-source'
 
 }
 
