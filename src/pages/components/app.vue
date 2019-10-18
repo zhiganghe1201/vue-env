@@ -1,6 +1,7 @@
 <template>
 	<div class="message">
 		{{ message }}
+	<div>练习git</div>
 	</div>
 </template>
 
