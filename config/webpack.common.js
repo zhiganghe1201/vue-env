@@ -8,11 +8,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的�
 
 const webpackCommonConfig = {
 	entry: {
-		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/index.js')], // babel 转码时需要在入口文件引入 @babel/polyfill
+		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill
 	},
 	output: {
-		filename: '[name].bundle.js',
+		filename: '[name].[hash:8].bundle.js',
 		path: path.resolve(APP_ROOT, 'dist'),
+		publicPath: '/'
 	},
 	resolve: {
 		modules: [path.resolve(APP_ROOT, 'src'), 'node_modules'], // 配置 Webpack 去哪些目录下寻找第三方模块 可优化大量被导入的依赖
@@ -20,6 +21,8 @@ const webpackCommonConfig = {
 		alias: {
 			'vue$': 'vue/dist/vue.esm.js', // 控制台报警告
 			'@components': path.resolve(APP_ROOT, './src/pages/components'),
+			'@assets': path.resolve(APP_ROOT, './src/assets'),
+			'@common': path.resolve(APP_ROOT, './src/pages/components/_common')
 		}
 	},
 	module: {
@@ -56,17 +59,31 @@ const webpackCommonConfig = {
 		]
 	},
 	plugins: [
-		new VueLoaderPlugin(), // 让webpack 识别vue
+		new VueLoaderPlugin(), // vue加载器
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(APP_ROOT, 'src/static/index.tpl.html'),
 			inject: 'body',
 			filename: './index.html'
 		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			miniChunks: 2
-		})
-	]
+	],
+
+	optimization: {
+		splitChunks: {  // 代码分离； 多入口文件
+			name: 'common',
+			chunks: 'all',
+			cacheGroups: {
+				vendors: {
+					chunks: 'initial',
+					test: '/node_modules/',
+					name: 'vendor',
+					// minichunks: 1,
+					// enforce: true
+				}
+			}
+
+		}
+	}
 	
 }
 

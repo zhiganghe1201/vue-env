@@ -14,13 +14,12 @@ const webpackDevConfig = {
 		host: 'localhost', // 设置服务器的ip地址，默认localhost
 		open: true, // 自动打开浏览器
 		inline: true,
-		historyApiFallback: true,
+		historyApiFallback: true, // 404页面会自动跳到 / 页面
 		hot: true
-
 	},
 
 	plugins: [
-
+		new webpack.NamedChunksPlugin(),
 		new webpack.HotModuleReplacementPlugin()
 	]
 }
