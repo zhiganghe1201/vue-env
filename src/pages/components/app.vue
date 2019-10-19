@@ -1,6 +1,7 @@
 <template>
 	<div class="message">
 		{{ message }}
+		merge 测试
 	</div>
 </template>
 
