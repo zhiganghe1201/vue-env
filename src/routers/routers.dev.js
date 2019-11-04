@@ -1,4 +1,4 @@
-import { loginConfig } from './login/app';
+import { loginConfig } from '../containers/login/app';
 
 export const basicRoutes = {
 	base: '/',

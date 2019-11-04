@@ -19,10 +19,11 @@ const webpackCommonConfig = {
 		modules: [path.resolve(APP_ROOT, 'src'), 'node_modules'], // 配置 Webpack 去哪些目录下寻找第三方模块 可优化大量被导入的依赖
 		extensions: ['.js', '.vue', '.json', '.scss', '.css'], // import 引入文件的时候不用加后缀
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js', // 控制台报警告
+			'vue$': 'vue/dist/vue.esm.js', // 除去控制台报警告
 			'@components': path.resolve(APP_ROOT, './src/pages/components'),
 			'@assets': path.resolve(APP_ROOT, './src/assets'),
-			'@common': path.resolve(APP_ROOT, './src/pages/components/_common')
+			'@common': path.resolve(APP_ROOT, './src/pages/components/_common'),
+			'@constants': path.resolve(APP_ROOT, './src/constants'),
 		}
 	},
 	module: {
