@@ -1,5 +1,8 @@
 const path = require('path');
+
 const APP_ROOT = process.cwd(); // process.cwd() 返回运行 node 命令时所在的文件夹的绝对路径 (node 命令 package,json)这里指 vue-env 下    __dirname 被执行的文件夹地址 这里指 vue-env/config 下 __filename 完整的文件名
+
+console.log(APP_ROOT);
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -24,6 +27,7 @@ const webpackCommonConfig = {
 			'@assets': path.resolve(APP_ROOT, './src/assets'),
 			'@common': path.resolve(APP_ROOT, './src/pages/components/_common'),
 			'@constants': path.resolve(APP_ROOT, './src/constants'),
+			'@containers': path.resolve(APP_ROOT, './src/containers')
 		}
 	},
 	module: {
@@ -51,7 +55,7 @@ const webpackCommonConfig = {
 				use: [{
 					loader: 'url-loader',
 					options: {
-						limit: 10240, //// 当图片小于10kb时，使用base64的方式进行打包
+						limit: 10240, // // 当图片小于10kb时，使用base64的方式进行打包
 						name: '[path]/[name].[hash:7].[ext]', // 加入hash是避免缓存
 					}
 				}]
@@ -66,11 +70,11 @@ const webpackCommonConfig = {
 			template: path.resolve(APP_ROOT, 'src/static/index.tpl.html'),
 			inject: 'body',
 			filename: './index.html'
-		}),
+		})
 	],
 
 	optimization: {
-		splitChunks: {  // 代码分离； 多入口文件
+		splitChunks: { // 代码分离； 多入口文件
 			name: 'common',
 			chunks: 'all',
 			cacheGroups: {
@@ -86,7 +90,7 @@ const webpackCommonConfig = {
 		}
 	}
 	
-}
+};
 
 
 module.exports = webpackCommonConfig;

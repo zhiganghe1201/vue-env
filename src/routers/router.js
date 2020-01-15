@@ -7,11 +7,13 @@ import Router from 'vue-router';
 import Vuex from 'vuex';
 
 
-import SettleTittle from '@common/settle-title';
+import SetTittle from '@common/set-title';
 
 /**
  * 全局变量 _global, 
  */
+import App from '@components/app';
+import Login from '@containers/login/modules/login';
 import global from './_global';
 
 /**
@@ -19,7 +21,6 @@ import global from './_global';
  */
 import { storeConfig } from '../stores/root';
 
-import App from '@components/app'
 // const vm = new Vue({
 // 	el: '#app',
 // 	data: {
@@ -35,14 +36,14 @@ import App from '@components/app'
  * 全局组件
  */
 
-Vue.component(SettleTittle)
+Vue.component('set-title', SetTittle);
 
 Vue.use(Vuex);
-const store = new Vuex.Store(storeConfig)
+const store = new Vuex.Store(storeConfig);
 
 Vue.use(global);
 
 new Vue({
 	store,
-	render: h => h(App)
-}).$mount(root)
+	render: h => h(Login)
+}).$mount(root);

@@ -1,7 +1,7 @@
 <template>
-	<settle-title title="login">
+	<set-title title="login">
 		<login-main />
-	</settle-title>
+	</set-title>
 </template>
 
 <script>
