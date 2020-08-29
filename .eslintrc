@@ -13,6 +13,7 @@
 		"plugin:vue/recommended",
 		"airbnb-base"
 	],
+		// 	off:0  warn:1 error:2
 	"rules": {
 		// vue https://github.com/vuejs/eslint-plugin-vue
 		"vue/html-indent": [
