@@ -2,7 +2,7 @@
 	<div class="login-main g-bg-666  g-fs-24">
 		{{ login }}
 		<div class="g-fs-24 g-m-l-24 g-c-main g-flex g-flex-cc">
-			g-cc
+			g-ccdasd 
 		</div>
 		<v-counter />
 	</div>
