@@ -1,6 +1,9 @@
 <template>
-	<div class="login-main">
+	<div class="login-main g-bg-666  g-fs-24">
 		{{ login }}
+		<div class="g-fs-24 g-m-l-24 g-c-main g-flex g-flex-cc">
+			g-cc
+		</div>
 		<v-counter />
 	</div>
 </template>
@@ -36,11 +39,12 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .login-main {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%)
+	width: 500px;
+	height: 500px;
+	background: red;
+	transform: translate(100px, 300px)
 }
 </style>
+

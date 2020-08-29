@@ -36,13 +36,13 @@ const webpackDevConfig = {
 	mode: 'development',
 	devtool: 'cheap-module-eval-souce-map', // source-map 将编译后的代码映射会原始源代码。
 	devServer: {
+		host: localIp, 
+		port: localPort, 
 		contentBase: '../dist', 
 		// compress: true, // 开启Gzip压缩
-		port: localPort, 
-		host: localIp, 
 		open: true, // 自动打开浏览器
 		inline: true,
-		quiet: true,
+		quiet: true, // stats: 'errors-only',
 		historyApiFallback: true, // 404页面会自动跳到 / 页面
 		hot: true,
 		// proxy: {

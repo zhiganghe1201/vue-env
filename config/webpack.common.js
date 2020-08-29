@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的引用需要这样
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const APP_ROOT = process.cwd();
 const ENV_IS_DEV = process.env.NODE_ENV === 'development';
@@ -13,16 +14,26 @@ const TIMESTAMP = new Date().getTime();
 const DIR_PATH = ENV_IS_DEV ? '' : `static.${TIMESTAMP}/`;
 const DIR_URL_PATH = ENV_IS_DEV ? '' : `static.${TIMESTAMP}/`; 
 
+const postcssLoader = {
+	loader: 'postcss-loader',
+	options: {
+		config: {
+			path: path.resolve(APP_ROOT, 'config/postcss.config.js')
+		}
+	}
+};
+
 const webpackCommonConfig = {
 	entry: {
-		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill
+		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill 也可以写在这里
 	},
 	output: {
+		path: path.resolve(APP_ROOT, 'dist'),
 		filename: `${DIR_PATH}js/[name].[hash:8].bundle.js`,
 		chunkFilename: `${DIR_PATH}js/[name].[hash:8].chunk.js`,
-		path: path.resolve(APP_ROOT, 'dist'),
 		sourceMapFilename: `${DIR_PATH}js/[name].[hash:8].bundle.map`,
-		publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
+		// publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
+		publicPath: '/'
 	},
 	// 路径重定向
 	resolve: {
@@ -56,7 +67,35 @@ const webpackCommonConfig = {
 				use: [
 					'vue-style-loader',
 					'css-loader',
+					postcssLoader,
+					'sass-loader',
+					{
+						loader: 'sass-resources-loader', // ??
+						options: {
+							resources: [
+								path.resolve(APP_ROOT, 'src/css/themes/index.scss')
+							]
+						}
+					}
+				],
+				// 组件内的样式
+				include: [
+					path.resolve(APP_ROOT, 'src/'),
+					path.resolve(APP_ROOT, 'node_modules')
+				]
+			},
+			{
+				test: /\.(css|scss)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					postcssLoader,
 					'sass-loader'
+				],
+				// 全局的样式
+				include: [
+					path.resolve(APP_ROOT, 'src/css')
+					// path.resolve(APP_ROOT, 'node_modules/iview')
 				]
 			},
 			{
@@ -75,7 +114,7 @@ const webpackCommonConfig = {
 					loader: 'url-loader',
 					options: {
 						limit: 10240, // // 当图片小于10kb时，使用base64的方式进行打包
-						name: '[path]/[name].[hash:7].[ext]', // 加入hash是避免缓存
+						name: `${DIR_URL_PATH}assets/[name].[hash:7].[ext]`, // 加入hash是避免缓存
 					}
 				}]
 
@@ -83,6 +122,9 @@ const webpackCommonConfig = {
 		]
 	},
 	plugins: [
+		new MiniCssExtractPlugin({
+			filename: `${DIR_PATH}css/initial.[name].css`
+		}),
 		new VueLoaderPlugin(), // vue加载器
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
@@ -107,7 +149,8 @@ const webpackCommonConfig = {
 			}
 
 		}
-	}
+	},
+	cache: true, // 启用编译缓存
 	
 };
 
