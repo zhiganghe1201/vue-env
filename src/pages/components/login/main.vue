@@ -1,16 +1,22 @@
 <template>
 	<div class="login-main">
 		{{ login }}
+		<v-counter />
 	</div>
 </template>
 
 <script>
+import Counter from '../_common/counter';
+
 export default {
 	name: 'login-main',
+	components: {
+		'v-counter': Counter
+	},
 
 	data() {
 		return {
-			login: '登陆页'
+			login: '登陆页',
 		};
 	},
 

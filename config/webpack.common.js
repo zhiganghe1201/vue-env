@@ -1,23 +1,30 @@
+console.log(`NODE_ENV : ${process.env.NODE_ENV}`);
 const path = require('path');
-
-const APP_ROOT = process.cwd(); // process.cwd() 返回运行 node 命令时所在的文件夹的绝对路径 (node 命令 package,json)这里指 vue-env 下    __dirname 被执行的文件夹地址 这里指 vue-env/config 下 __filename 完整的文件名
-
-console.log(APP_ROOT);
-
+// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的引用需要这样
+
+const APP_ROOT = process.cwd();
+const ENV_IS_DEV = process.env.NODE_ENV === 'development';
+const TIMESTAMP = new Date().getTime();
+
+// TODO_ 打包部署时操作以下地址
+const DIR_PATH = ENV_IS_DEV ? '' : `static.${TIMESTAMP}/`;
+const DIR_URL_PATH = ENV_IS_DEV ? '' : `static.${TIMESTAMP}/`; 
 
 const webpackCommonConfig = {
 	entry: {
 		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill
 	},
 	output: {
-		filename: '[name].[hash:8].bundle.js',
+		filename: `${DIR_PATH}js/[name].[hash:8].bundle.js`,
+		chunkFilename: `${DIR_PATH}js/[name].[hash:8].chunk.js`,
 		path: path.resolve(APP_ROOT, 'dist'),
-		publicPath: '/'
+		sourceMapFilename: `${DIR_PATH}js/[name].[hash:8].bundle.map`,
+		publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
 	},
+	// 路径重定向
 	resolve: {
 		modules: [path.resolve(APP_ROOT, 'src'), 'node_modules'], // 配置 Webpack 去哪些目录下寻找第三方模块 可优化大量被导入的依赖
 		extensions: ['.js', '.vue', '.json', '.scss', '.css'], // import 引入文件的时候不用加后缀
@@ -32,6 +39,18 @@ const webpackCommonConfig = {
 	},
 	module: {
 		rules: [
+			{
+				test: /\.jsx?$/,
+				include: path.resolve(APP_ROOT, 'src'),
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							cacheDirectory: true
+						}
+					}
+				]
+			},
 			{
 				test: /\.(css|scss)$/,
 				use: [

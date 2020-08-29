@@ -33,11 +33,11 @@ const webpackProdConfig = {
 		})
 	]
 
-}
+};
 
 
 
 module.exports = webpackMerge(
 	webpackCommonConfig,
 	webpackProdConfig
-)
+);
