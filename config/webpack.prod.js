@@ -2,34 +2,29 @@ process.env.NODE_ENV = 'production';
 const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const MiniCssExtractPlugiin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-
-const webpackCommonConfig = require('./webpack.common');
+const { webpackCommonConfig, DIR_PATH } = require('./webpack.common');
 
 const webpackProdConfig = {
 	mode: 'production',
 	// devtool: 'cheap-module-source', // 生产环境不要开启source-map
-	module: {
-		rules: [
-			{
-				test: /\.css$/,
-				use: [
-					{
-						loader: MiniCssExtractPlugiin.loader,
-						options: {
-							publicPath: '../'
-						}
-					},
-					'css-loader'
-				]
-			}
-		]
-	},
+
 	plugins: [
-		new MiniCssExtractPlugiin({
-			filename: '[name].css',
-			chunkFilename: '[id].css',
+		new webpack.DefinePlugin({
+			__DEV__: 'false'
+		}),
+		new BundleAnalyzerPlugin({
+			analyzerMode: 'static', // static 生成html文件 | server 一直监听 | disabled 生成json文件
+			// analyzerHost: localIp,
+			// analyzerPort: bundleAnalyzerPort,
+			reportFilename: `${DIR_PATH}report.html`,
+			defaultSizes: 'gzip',
+			openAnalyzer: false,
+			generateStatsFile: false,
+			// statsFilename: 'stats.json',
+			// statsOptions: null,
+			logLevel: 'info'
 		})
 	]
 

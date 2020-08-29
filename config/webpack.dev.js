@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge');
 const fs = require('fs-extra');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-const webpackCommonConfig = require('./webpack.common.js');
+const { webpackCommonConfig } = require('./webpack.common.js');
 const userConfig = fs.existsSync(path.resolve(__dirname, './user.config.js')) 
 	? require('./user.config.js')
 	: {};
@@ -57,6 +57,10 @@ const webpackDevConfig = {
 	plugins: [
 		new webpack.NamedChunksPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
+		// webpack 4 默认支持 'process.env.NODE_ENV': 'development'
+		new webpack.DefinePlugin({
+			__DEV__: 'true'
+		}),
 		new FriendlyErrorsWebpackPlugin({
 			compilationSuccessInfo: {
 				messages: [`Dev Server: http://${localIp}:${localPort}`],

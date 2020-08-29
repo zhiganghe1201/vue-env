@@ -1,6 +1,5 @@
 console.log(`NODE_ENV : ${process.env.NODE_ENV}`);
 const path = require('path');
-// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的引用需要这样
@@ -129,8 +128,14 @@ const webpackCommonConfig = {
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(APP_ROOT, 'src/static/index.tpl.html'),
-			inject: 'body',
-			filename: './index.html'
+			chunks: ['common', 'main'], // 当前路由所包含的模块，注意common引入方式
+			inject: 'body', // js css 插入html的位置,true或body时插入body底部, 为head时插入head中
+			filename: './index.html', // 生成html 存放的路径, 相对与path的路径
+			favicon: path.resolve(APP_ROOT, 'src/static/favicon.ico'), // TODO 目前开发环境不显示
+			minify: { // 压缩HTML文件
+				removeComments: true, // 移除HTML中的注释
+				collapseWhitespace: false // 删除空白符与换行符
+			}
 		})
 	],
 
@@ -155,4 +160,8 @@ const webpackCommonConfig = {
 };
 
 
-module.exports = webpackCommonConfig;
+module.exports = {
+	APP_ROOT,
+	DIR_PATH,
+	webpackCommonConfig
+};
