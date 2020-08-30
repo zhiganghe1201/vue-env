@@ -2,7 +2,11 @@
 	"root": true,
 	"parserOptions": {
 		"parser": "babel-eslint",
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaVersion": 6,
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	  },
 	"env": {
 		"browser": true,
@@ -12,6 +16,11 @@
 	"extends": [
 		"plugin:vue/recommended",
 		"airbnb-base"
+	],
+	"plugins": [
+		"markdown",
+		// "babel",
+		"vue"
 	],
 		// 	off:0  warn:1 error:2
 	"rules": {

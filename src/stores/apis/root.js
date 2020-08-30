@@ -1,6 +1,7 @@
 import { DEV_WITH_SERVER } from '@constants/constants';
 import _common from './_common';
 import login from './login';
+import home from './home';
 
 const API = {
 	..._common,
@@ -8,9 +9,9 @@ const API = {
 };
 
 let baseUrl;
-if(__DEV__) {
+// if (__DEV__) {
 
-}
+// }
 console.log(_common);
 
 
