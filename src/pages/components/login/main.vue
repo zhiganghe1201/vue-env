@@ -1,8 +1,8 @@
 <template>
-	<div class="login-main g-bg-666  g-fs-24">
+	<div class="login-main g-bg-666 g-fs-24">
 		{{ login }}
 		<div class="g-fs-24 g-m-l-24 g-c-main g-flex g-flex-cc">
-			g-ccdasd 
+			g-ccdasd
 		</div>
 		<v-counter />
 	</div>
@@ -14,7 +14,7 @@ import Counter from '../_common/counter';
 export default {
 	name: 'login-main',
 	components: {
-		'v-counter': Counter
+		'v-counter': Counter,
 	},
 
 	data() {
@@ -23,19 +23,11 @@ export default {
 		};
 	},
 
-	computed: {
+	computed: {},
+	watch: {},
+	mounted() {},
 
-	},
-	watch: {
-
-	},
-	mounted() {
-
-	},
-
-	methods: {
-
-	},
+	methods: {},
 };
 </script>
 
@@ -44,7 +36,6 @@ export default {
 	width: 500px;
 	height: 500px;
 	background: red;
-	transform: translate(100px, 300px)
+	transform: translate(100px, 300px);
 }
 </style>
-
