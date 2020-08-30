@@ -33,9 +33,7 @@ const question = [
 
 
 prompt(question).then((result = {}) => {
-	let contents = '';
-	const strObj = JSON.stringify(result || {});
-	contents = `const obj = ${strObj};module.exports = obj;`;
+	let contents = `const obj = { 'install': ${result.install}, 'port': ${result.port} }; module.exports = obj;`;
 	fs.outputFileSync('./config/user.config.js', contents);
 
 }).catch(err => {
