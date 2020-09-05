@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 新版本的引用需要这样
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const APP_ROOT = process.cwd();
 const ENV_IS_DEV = process.env.NODE_ENV === 'development';
@@ -128,6 +129,15 @@ const webpackCommonConfig = {
 		new MiniCssExtractPlugin({
 			filename: `${DIR_PATH}css/initial.[name].css`,
 		}),
+		// 把一些public 的静态文件copy到dist
+		// new CopyWebpackPlugin({
+		// 	patterns: [
+		// 		{
+		// 			from: path.resolve(APP_ROOT, 'public/libs/'),
+		// 			to: path.resolve(APP_ROOT, 'dist/libs/')
+		// 		}
+		// 	]
+		// }),
 		new VueLoaderPlugin(), // vue加载器
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
