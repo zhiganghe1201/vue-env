@@ -5,8 +5,8 @@ const { exec } = require('shelljs');
 const question = [
 	{
 		type: 'confirm',
-		name: 'install',
-		message: 'npm install?',
+		name: 'yarn',
+		message: 'yarn add?',
 		default: false
 	},
 	{
@@ -15,7 +15,7 @@ const question = [
 		message: 'port',
 		default: '8082',
 		choices(answers) {
-			if (answers.install) {
+			if (answers.add) {
 				let done = this.async();
 				exec('yarn', { silent: true }, (code, stdout, stderr) => {
 					console.log('Exit code:', code);

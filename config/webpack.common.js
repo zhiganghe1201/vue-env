@@ -24,8 +24,9 @@ const postcssLoader = {
 };
 
 const webpackCommonConfig = {
+	// '@babel/polyfill',  用于低版本浏览器兼容, 已不推荐使用, 推荐通过preset-env的useBuiltIns 属性按需引入
 	entry: {
-		main: ['@babel/polyfill', path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill 也可以写在这里
+		main: [path.resolve(APP_ROOT, 'src/main.js')], // babel 转码时需要在入口文件引入 @babel/polyfill 也可以写在这里
 	},
 	output: {
 		path: path.resolve(APP_ROOT, 'dist'),
