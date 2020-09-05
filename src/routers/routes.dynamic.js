@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 
 class Manager {
-	constructor (basicRoutes, dynamicRoutes) {
+	constructor(basicRoutes, dynamicRoutes) {
 		this.basicRoutes = basicRoutes;
 		this.dynamicRoutes = dynamicRoutes;
 

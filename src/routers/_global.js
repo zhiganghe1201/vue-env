@@ -7,10 +7,10 @@ import { TOKEN_KEY } from '@constants/constants';
  * 组件外等特殊场景使用_global
  */
 
- typeof window === 'object' ? window._global = {} : this._global = {};
+typeof window === 'object' ? window._global = {} : this._global = {};
 
- // GUID  Globally Unique Identifier
-_global.GUID = location.host.split(".")[0];
+// GUID  Globally Unique Identifier
+_global.GUID = location.host.split('.')[0];
 
 // 程序打开时间
 _global.landingTime = new Date();
@@ -34,4 +34,4 @@ export default {
 		 */
 		// Vue.prototype.$auth = _global.user.auth;
 	}
-}
+};

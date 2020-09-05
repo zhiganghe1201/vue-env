@@ -16,4 +16,3 @@ export const DEV_WITH_SERVER = !0;
  */
 export const TOKEN_KEY = 'user_token';
 export const ACCOUNT_TOKEN_KEY = 'accont_token';
-export const SYSTEM_REGEX = /^(xls|sd)$/;

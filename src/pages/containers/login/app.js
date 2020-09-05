@@ -6,4 +6,4 @@ export const loginConfig = [
 		name: 'login',
 		component: () => import('./modules/main.vue')
 	}
-]
+];
