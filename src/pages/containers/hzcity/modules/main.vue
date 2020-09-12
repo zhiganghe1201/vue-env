@@ -1,16 +1,16 @@
 <template>
-	<set-title title="login">
-		<login-main />
+	<set-title title="杭州市">
+		<c-hzcity-main />
 	</set-title>
 </template>
 
 <script>
-import Main from '@components/login/main';
+import Main from '@components/hzcity/main';
 
 export default {
-	name: 'login',
+	name: 'hzcity',
 	components: {
-		'login-main': Main
+		'c-hzcity-main': Main
 	},
 	data() {
 		return {

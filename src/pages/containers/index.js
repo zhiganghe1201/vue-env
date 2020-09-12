@@ -1,12 +1,9 @@
-import { loginConfig } from './login/app';
-import { homeConfig } from './home/app';
+import { hzcityConfig } from './hzcity/app';
+import { wulingConfig } from './wuling/app';
+import { baiyangConfig } from './baiyang/app';
 
 export const routes = [
-	...loginConfig,
-	...homeConfig
+	...hzcityConfig,
+	...wulingConfig,
+	...baiyangConfig
 ];
-
-class Demo {
-	static name = 123;
-	
-}

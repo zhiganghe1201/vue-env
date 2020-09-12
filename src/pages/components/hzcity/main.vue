@@ -1,20 +1,20 @@
 <template>
-	<div class="login-main g-bg-666 g-fs-24">
-		home - main
-		this is home page
+	<div class="hangzhou-main g-fs-24 g-b g-flex-cc">
+		hangzhou - city - page
 	</div>
 </template>
 
 <script>
 
 export default {
-	name: 'home-main',
+	name: 'hangzhou-main',
 	components: {
+
 	},
 
 	data() {
 		return {
-			login: '登陆页',
+			
 		};
 	},
 
@@ -27,10 +27,12 @@ export default {
 </script>
 
 <style lang="scss">
-.login-main {
+.hangzhou-main {
 	width: 500px;
 	height: 500px;
-	background: red;
-	transform: translate(100px, 300px);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-250px, -250px);
 }
 </style>
