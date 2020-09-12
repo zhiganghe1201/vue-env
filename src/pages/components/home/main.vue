@@ -1,15 +1,15 @@
 <template>
 	<div class="login-main g-bg-666 g-fs-24">
-		login - main
+		home - main
+		this is home page
 	</div>
 </template>
 
 <script>
 
 export default {
-	name: 'login-main',
+	name: 'home-main',
 	components: {
-
 	},
 
 	data() {

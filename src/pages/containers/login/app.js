@@ -1,9 +1,7 @@
-import Login from './modules/main';
-
 export const loginConfig = [
 	{
-		path: '/login',
+		path: '/',
 		name: 'login',
-		component: () => import('./modules/main.vue')
+		component: () => import('./modules/login.vue')
 	}
 ];

@@ -6,7 +6,7 @@ const question = [
 	{
 		type: 'confirm',
 		name: 'yarn',
-		message: 'yarn add?',
+		message: 'yarn ?',
 		default: false
 	},
 	{
@@ -15,16 +15,16 @@ const question = [
 		message: 'port',
 		default: '8082',
 		choices(answers) {
-			if (answers.add) {
+			if (answers.yarn) {
 				let done = this.async();
 				exec('yarn', { silent: true }, (code, stdout, stderr) => {
 					console.log('Exit code:', code);
 					console.log('Program output:', stdout);
 					console.log('Program stderr:', stderr);
+					
 					if (code === 0) {
 						done(null, true);
 					}
-
 				});
 			}
 		}
@@ -33,7 +33,7 @@ const question = [
 
 
 prompt(question).then((result = {}) => {
-	let contents = `const obj = { 'install': ${result.install}, 'port': ${result.port} }; module.exports = obj;`;
+	let contents = `const obj = { 'yarn': ${result.yarn}, 'port': ${result.port} }; module.exports = obj;`;
 	fs.outputFileSync('./config/user.config.js', contents);
 
 }).catch(err => {
