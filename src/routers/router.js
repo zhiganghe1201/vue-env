@@ -3,10 +3,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Vuex from 'vuex';
-import { routes } from '@containers/index';
-
+import { isDev } from '@utils';
 
 import SetTittle from '@common/set-title';
+import { routesDev } from './routers.dev';
+import { routesDist } from './routers.dist';
 
 /**
  * 全局变量 _global, 
@@ -35,6 +36,13 @@ const store = new Vuex.Store(storeConfig);
 
 
 Vue.use(Router);
+console.log(isDev);
+let routes;
+if (isDev) {
+	routes = routesDev;
+} else {
+	routes = routesDist;
+}
 
 const router = new Router({
 	mode: 'history',
@@ -42,7 +50,7 @@ const router = new Router({
 });
 
 
-new Vue({
+const app = new Vue({
 	store,
 	router,
 	render: h => {
@@ -53,3 +61,6 @@ new Vue({
 		);
 	}
 }).$mount('#app');
+
+globalThis.app = app;
+globalThis.routes = routes;

@@ -47,6 +47,7 @@ const webpackCommonConfig = {
 			'@common': path.resolve(APP_ROOT, './src/pages/components/_common'),
 			'@constants': path.resolve(APP_ROOT, './src/pages/constants'),
 			'@containers': path.resolve(APP_ROOT, './src/pages/containers'),
+			'@utils': path.resolve(APP_ROOT, './src/pages/utils')
 		},
 	},
 	module: {
@@ -139,7 +140,7 @@ const webpackCommonConfig = {
 		// 		}
 		// 	]
 		// }),
-		new VueLoaderPlugin(), // vue加载器
+		new VueLoaderPlugin(),
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(APP_ROOT, 'public/index.tpl.html'),
