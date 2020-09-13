@@ -1,4 +1,4 @@
-//中间件
+// 中间件
 import createLogger from 'vuex/dist/logger';
 
 import modules from './modules/root';
@@ -9,4 +9,4 @@ export const storeConfig = {
 	strict: debug,
 	plugins: debug ? [createLogger()] : [],
 	modules
-}
+};

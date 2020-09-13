@@ -9,7 +9,7 @@ const targetModules = [];
 fs.readdirSync(directory).forEach(file => {
 	const fullpath = resolve(directory, file);
 	const stat = fs.statSync(fullpath);
-	if (file !== 'index.js' && stat.isDirectory) {
+	if (stat.isDirectory) {
 		targetModules.push(file);
 	}
 });

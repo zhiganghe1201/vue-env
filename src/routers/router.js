@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Vuex from 'vuex';
+import { sync } from 'vuex-router-sync';
 import { isDev } from '@utils';
 
 import SetTittle from '@common/set-title';
@@ -36,7 +37,7 @@ const store = new Vuex.Store(storeConfig);
 
 
 Vue.use(Router);
-console.log(isDev);
+
 let routes;
 if (isDev) {
 	routes = routesDev;
@@ -49,6 +50,8 @@ const router = new Router({
 	routes
 });
 
+
+sync(store, router);
 
 const app = new Vue({
 	store,
