@@ -1,11 +1,14 @@
 import { DEV_WITH_SERVER } from '@constants/constants';
 import _common from './_common';
-import login from './login';
-import home from './home';
+import hzcity from './hzcity';
+import wuling from './wuling';
+import baiyang from './baiyang';
 
 const API = {
 	..._common,
-	...login
+	...hzcity,
+	...wuling,
+	...baiyang
 };
 
 let baseUrl;

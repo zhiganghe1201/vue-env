@@ -1,5 +1,5 @@
 const api = {
-	_HOME_LOGIN_GET: ''
+	HZCITY_LOGIN_GET: ''
 };
 
 export default api;
