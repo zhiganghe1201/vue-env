@@ -5,11 +5,13 @@ import Router from 'vue-router';
 import Vuex from 'vuex';
 import { sync } from 'vuex-router-sync';
 import { isDev } from '@utils';
+import request from '@utils/request';
 
 import SetTittle from '@common/set-title';
 import { routesDev } from './routers.dev';
 import { routesDist } from './routers.dist';
 
+import '../stores/apis/root';
 /**
  * 全局变量 _global, 
  */
@@ -31,6 +33,7 @@ Vue.component('set-title', SetTittle);
 
 
 Vue.use(global);
+Vue.use(request);
 Vue.use(Vuex);
 
 const store = new Vuex.Store(storeConfig);
@@ -45,7 +48,7 @@ if (isDev) {
 	routes = routesDist;
 }
 
-const router = new Router({
+export const router = new Router({
 	mode: 'history',
 	routes
 });

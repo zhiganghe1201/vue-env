@@ -20,7 +20,9 @@ export default {
 
 	computed: {},
 	watch: {},
-	mounted() {},
+	mounted() {
+		
+	},
 
 	methods: {},
 };
