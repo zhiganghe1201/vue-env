@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import URLS from '@stores/apis/root';
-import { router } from '../routers/router';
+import { router } from '../../routers/router';
 
 const service = axios.create({
 	timeout: 10000
