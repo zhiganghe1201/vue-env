@@ -6,7 +6,7 @@ const mutations = {
 
 };
 
-export const login = {
+export const hzcity = {
 	state: { ...initialState },
 	mutations
 };

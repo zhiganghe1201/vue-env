@@ -1,16 +1,16 @@
 <template>
-	<set-title title="home">
-		<home-main />
+	<set-title title="白杨">
+		<c-baiyang-main />
 	</set-title>
 </template>
 
 <script>
-import Main from '@components/home/main';
+import Main from '@components/baiyang/main';
 
 export default {
-	name: 'home',
+	name: 'baiyang',
 	components: {
-		'home-main': Main
+		'c-baiyang-main': Main
 	},
 	data() {
 		return {

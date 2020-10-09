@@ -34,7 +34,6 @@ const webpackCommonConfig = {
 		chunkFilename: `${DIR_PATH}js/[name].[hash:8].chunk.js`,
 		sourceMapFilename: `${DIR_PATH}js/[name].[hash:8].bundle.map`,
 		// publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
-		publicPath: '/',
 	},
 	// 路径重定向
 	resolve: {
@@ -47,6 +46,8 @@ const webpackCommonConfig = {
 			'@common': path.resolve(APP_ROOT, './src/pages/components/_common'),
 			'@constants': path.resolve(APP_ROOT, './src/pages/constants'),
 			'@containers': path.resolve(APP_ROOT, './src/pages/containers'),
+			'@utils': path.resolve(APP_ROOT, './src/pages/utils'),
+			'@stores': path.resolve(APP_ROOT, './src/stores')
 		},
 	},
 	module: {
@@ -139,7 +140,7 @@ const webpackCommonConfig = {
 		// 		}
 		// 	]
 		// }),
-		new VueLoaderPlugin(), // vue加载器
+		new VueLoaderPlugin(),
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(APP_ROOT, 'public/index.tpl.html'),

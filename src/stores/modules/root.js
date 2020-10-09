@@ -1,5 +1,9 @@
-import login from './login/root';
+import hzcity from './hzcity/root';
+import wuling from './wuling/root';
+import baiyang from './baiyang/root';
 
 export default {
-	...login
+	...hzcity,
+	...wuling,
+	...baiyang
 };

@@ -39,7 +39,7 @@ const webpackDevConfig = {
 		host: localIp, 
 		port: localPort, 
 		contentBase: '../dist', 
-		// compress: true, // 开启Gzip压缩
+		compress: true, // 开启Gzip压缩
 		open: true, // 自动打开浏览器
 		inline: true,
 		quiet: true, // stats: 'errors-only',
@@ -48,8 +48,11 @@ const webpackDevConfig = {
 		// proxy: {
 		// 	'/api': {
 		// 		target: 'http://test.com',
-		// 		secure: false,
-		// 		changeOrigin: true,
+		// 		secure: false, // 支持https
+		// 		changeOrigin: true, // 本地虚拟一个服务器接收你的请求并代你发送该请求, 解决跨域
+		// 		pathRewrite: {
+		// 			'/^api': ''
+		// 		}
 		// 	}
 		// }
 	},

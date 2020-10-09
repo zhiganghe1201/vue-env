@@ -1,36 +1,40 @@
 <template>
-	<div class="login-main g-bg-666 g-fs-24">
-		home - main
-		this is home page
+	<div class="baiyang-main g-fs-24 g-b g-flex-cc">
+		baiyang - page
 	</div>
 </template>
 
 <script>
 
 export default {
-	name: 'home-main',
+	name: 'baiya-main',
 	components: {
+
 	},
 
 	data() {
 		return {
-			login: '登陆页',
+			
 		};
 	},
 
 	computed: {},
 	watch: {},
-	mounted() {},
+	mounted() {
+		
+	},
 
 	methods: {},
 };
 </script>
 
 <style lang="scss">
-.login-main {
+.baiyang-main {
 	width: 500px;
 	height: 500px;
-	background: red;
-	transform: translate(100px, 300px);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-250px, -250px);
 }
 </style>
