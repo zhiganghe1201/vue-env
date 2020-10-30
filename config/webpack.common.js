@@ -47,7 +47,7 @@ const webpackCommonConfig = {
 			'@constants': path.resolve(APP_ROOT, './src/pages/constants'),
 			'@containers': path.resolve(APP_ROOT, './src/pages/containers'),
 			'@utils': path.resolve(APP_ROOT, './src/pages/utils'),
-			'@stores': path.resolve(APP_ROOT, './src/stores')
+			'@stores': path.resolve(APP_ROOT, './src/stores'),
 		},
 	},
 	module: {

@@ -1,9 +1,11 @@
 const initialState = {
-	data: ''
+	LOGIN_NAME: ''
 };
 
 const mutations = {
-
+	SET_WULING_LOGIN_NAME(state, v) {
+		state.LOGIN_NAME = v;
+	}
 };
 
 

@@ -33,7 +33,7 @@ const question = [
 					console.log('Exit code:', code);
 					console.log('Program output:', stdout);
 					console.log('Program stderr:', stderr);
-					
+
 					if (code === 0) {
 						done(null, true);
 					}

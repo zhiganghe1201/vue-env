@@ -10,7 +10,7 @@ const service = axios.create({
 const request = ({ url, method = 'get', params, config = {} }) => {
 	return new Promise((resolve, reject) => {
 		if (!url) reject(new Error('url is not null!!!'));
-		
+
 		service({
 			url: URLS[url],
 			method,
@@ -24,7 +24,7 @@ const request = ({ url, method = 'get', params, config = {} }) => {
 	});
 };
 
-let httpCode = { 
+let httpCode = {
 	400: '请求参数错误',
 	401: '权限不足, 请重新登录',
 	403: '服务器拒绝本次访问',
@@ -53,24 +53,28 @@ service.interceptors.request.use(config => {
 	//   spinner: 'fa fa-spinner fa-spin fa-3x fa-fw',
 	//   text: '拼命加载中...'
 	// });
-	config.headers = Object.assign(config.method === 'get' ? {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json;charset=UTF-8'
-	} : {
-		'Context-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-	}, config.headers);
+	config.headers = Object.assign(
+		config.method === 'get' ? {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json;charset=UTF-8'
+		}
+			: {
+				'Context-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+			},
+		config.headers
+	);
 
 	if (config.method === 'get') { // 添加时间戳参数，防止浏览器（IE）对get请求的缓存
-	  config.params = {
+		config.params = {
 			...config.params,
 			t: new Date().getTime()
-	  };
+		};
 	}
 	return Promise.resolve(config);
 }, error => {
 	return Promise.reject(error);
 });
-  
+
 // 拦截响应
 service.interceptors.response.use(response => {
 	// loadingInstance.close();
@@ -84,24 +88,24 @@ service.interceptors.response.use(response => {
 	// loadingInstance.close();
 	console.log(error);
 	if (error.response) {
-		  // 根据请求失败的http状态码去给用户相应的提示
-	  let tips = error.response.status in httpCode ? httpCode[error.response.status] : error.response.data.message;
-	  Message({
+		// 根据请求失败的http状态码去给用户相应的提示
+		let tips = error.response.status in httpCode ? httpCode[error.response.status] : error.response.data.message;
+		Message({
 			message: tips,
 			type: 'error'
-	  });
-	  if (error.response.status === 401) {
+		});
+		if (error.response.status === 401) {
 			router.push({
-				path: '/not-fount' 
+				path: '/not-fount'
 			});
-	  }
-	  return Promise.reject(error);
+		}
+		return Promise.reject(error);
 	} else {
-	  Message({
+		Message({
 			message: '您没有权限, 请稍后重试',
 			type: 'error'
-	  });
-	  return Promise.reject(new Error('请求超时, 请稍后重试'));
+		});
+		return Promise.reject(new Error('请求超时, 请稍后重试'));
 	}
 });
 
