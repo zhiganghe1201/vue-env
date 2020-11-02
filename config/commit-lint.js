@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 
-const commitRE = /^(revert: )?(fix|feat|docs|perf|test|types|build|chore|refactor|breaking change|merge|ci)(\(.+\))?: .{1,50}/;
+const commitRE = /^(revert: )?(fix|feat|docs|perf|test|types|style|build|chore|refactor|breaking change|merge|ci|wip)(\(.+\))?: .{1,50}/;
 const mergeRE = /Merge branch /;
 
 const gitParams = process.env.HUSKY_GIT_PARAMS;
@@ -30,6 +30,7 @@ if (!commitRE.test(commitMsg) && !mergeRE.test(commitMsg)) {
 		- refactor：重构（即不是新增功能，也不是修改bug的代码变动）
 		- revert：回滚某个更早之前的提交
 		- ci: 与CI(持续集成服务)有关的改动
+		- wip: 开发中
 		`
 	);
 	process.exit(1);
