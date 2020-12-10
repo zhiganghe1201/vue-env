@@ -41,7 +41,7 @@ prompt(question).then((result = {}) => {
 	let { isBuildAll, modules } = result;
 	modules = isBuildAll === 'NO' ? modules : targetModules;
 	console.log(modules);
-	fs.outputFileSync('./src/routers/routers.dist.js', routes({ modules }));
+	fs.outputFileSync('./src/routers/routers.dist.js', routes({ modules, env: 'dist' }));
 }).catch(err => {
 	console.log(err);
 });

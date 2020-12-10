@@ -70,7 +70,7 @@ prompt(question).then((result = {}) => {
 	let contents = `const obj = { 'yarn': ${yarn}, 'port': ${port} }; module.exports = obj;`;
 	fs.outputFileSync('./config/user.config.js', contents);
 	console.log(modules);
-	fs.outputFileSync('./src/routers/routers.dev.js', routes({ modules }));
+	fs.outputFileSync('./src/routers/routers.dev.js', routes({ modules, env: 'dev' }));
 
 }).catch(err => {
 	console.log(err);
