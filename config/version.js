@@ -51,7 +51,7 @@ if (versionStr.indexOf(commitHash) != -1) {
 	console.log(execSync('git rev-parse --abbrev-ref HEAD').toString().trim(), 'sdsdsdsd');
 	// 写入版本信息之后，自动将版本信息提交到当前分支的git上
 	if (autoPush) {
-		execSync(`git commit ${versionPath} -m 自动提交版本信息`);
+		execSync(`git commit ${versionPath} -m docs:自动提交版本信息`);
 		execSync(`git push origin ${execSync('git rev-parse --abbrev-ref HEAD').toString().trim()}`);
 	}
 }
