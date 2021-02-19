@@ -5,18 +5,15 @@ const fs = require('fs');
 const versionPath = 'version.txt'; // version路径
 const buildPath = 'dist'; // 打包的路径
 const autoPush = true; // 写入版本信息之后是否自动提交git上
-const commitHash = execSync('git show -s --format=%H').toString().trim(); // 当前提交的版本号
+const commitHash = execSync('git show -s --format=%H').toString().trim(); // 最后提交的版本hash
 const gitRemteAddress = execSync('git remote -v').toString().split('\n')[0].split('\t')[1];
-/** 程序开始**/
 let versionStr = ''; // 版本信息字符串
 
 // 如果versionPath存在，将先读取里边的版本信息
 if (fs.existsSync(versionPath)) {
 	versionStr = fs.readFileSync(versionPath).toString() + '\n';
 }
-console.log(versionStr.indexOf(commitHash) != -1);
-// console.log(versionStr, 'version');
-// 根据版本信息是已存在commit，进行不同处理
+
 if (versionStr.indexOf(commitHash) != -1) {
 	console.warn('\x1B[33m%s\x1b[0m', 'warming: 当前的git版本数据已经存在了!\n');
 } else {
@@ -40,7 +37,7 @@ if (versionStr.indexOf(commitHash) != -1) {
 		gitRemoteAddress: ${gitRemteAddress}
 		buildUserName: ${buildUserName}
 		buildUserEmail: ${buildUserEmail}
-		buildBranch:${branch}
+		buildBranch: ${branch}
 		buildDate: ${buildDate}
 		\n${new Array(80).join('*')}
 		`;
@@ -48,7 +45,6 @@ if (versionStr.indexOf(commitHash) != -1) {
 	fs.writeFileSync(versionPath, versionStr, {
 		flag: 'a'
 	});
-	console.log(execSync('git rev-parse --abbrev-ref HEAD').toString().trim(), 'sdsdsdsd');
 	// 写入版本信息之后，自动将版本信息提交到当前分支的git上
 	if (autoPush) {
 		execSync(`git add ${versionPath}`);
@@ -61,14 +57,13 @@ if (versionStr.indexOf(commitHash) != -1) {
 if (fs.existsSync(buildPath)) {
 	fs.writeFileSync(`${buildPath}/${versionPath}`, fs.readFileSync(versionPath));
 }
-console.log('5555555555555555555555555555555');
 
-// 程序执行结束
 console.info('\x1B[32m%s\x1b[0m', [
-	'██████╗ ███████╗██████╗ ███████╗ █████╗  ██████╗██╗   ██╗',
-	'██╔══██╗██╔════╝██╔══██╗██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝',
-	'██████╔╝█████╗  ██████╔╝███████╗███████║██║  ███╗╚████╔╝ ',
-	'██╔═══╝ ██╔══╝  ██╔══██╗╚════██║██╔══██║██║   ██║ ╚██╔╝  ',
-	'██║     ███████╗██║  ██║███████║██║  ██║╚██████╔╝  ██║   ',
-	'╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   '
+	'::::::::  :::    :::  ::::::::   ::::::::  :::::::::: ::::::::   ::::::::  ',
+	':+:    :+: :+:    :+: :+:    :+: :+:    :+: :+:       :+:    :+: :+:    :+: ',
+	'+:+        +:+    +:+ +:+        +:+        +:+       +:+        +:+        ',
+	'+#++:++#++ +#+    +:+ +#+        +#+        +#++:++#  +#++:++#++ +#++:++#++ ',
+	'       +#+ +#+    +#+ +#+        +#+        +#+              +#+        +#+ ',
+	'#+#    #+# #+#    #+# #+#    #+# #+#    #+# #+#       #+#    #+# #+#    #+# ',
+	' ########   ########   ########   ########  ########## ########   ########  '
 ].join('\n'));
