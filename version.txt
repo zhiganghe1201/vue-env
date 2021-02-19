@@ -12,3 +12,16 @@
 		
 *******************************************************************************
 		
+		commitHash: d97d611d440d28b95b3bdca5567f358fb84f6172
+		commitUserName: 何志刚
+		commitUserEmail: zhiganghe1201@outlook.com
+		commitMessage: test: version.js
+		commitDate: 2021-2-19 15:58
+		gitRemoteAddress: https://github.com/zhiganghe1201/vue-env.git (fetch)
+		buildUserName: 何志刚
+		buildUserEmail: zhiganghe1201@outlook.com
+		buildBranch:develop
+		buildDate: 2021-2-19 15:59
+		
+*******************************************************************************
+		

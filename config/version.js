@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const versionPath = 'version.txt'; // version路径
 const buildPath = 'dist'; // 打包的路径
-// const autoPush = true; // 写入版本信息之后是否自动提交git上
+const autoPush = true; // 写入版本信息之后是否自动提交git上
 const commitHash = execSync('git show -s --format=%H').toString().trim(); // 当前提交的版本号
 const gitRemteAddress = execSync('git remote -v').toString().split('\n')[0].split('\t')[1];
 /** 程序开始**/
@@ -45,12 +45,15 @@ if (versionStr.indexOf(commitHash) != -1) {
 		\n${new Array(80).join('*')}
 		`;
 
-	fs.writeFileSync(versionPath, versionStr, 'a');
+	fs.writeFileSync(versionPath, versionStr, {
+		flag: 'a'
+	});
+	console.log(execSync('git rev-parse --abbrev-ref HEAD').toString().trim(), 'sdsdsdsd');
 	// 写入版本信息之后，自动将版本信息提交到当前分支的git上
-	// if (autoPush) {
-	// 	execSync(`git commit ${versionPath} -m 自动提交版本信息`);
-	// 	execSync(`git push origin ${execSync('git rev-parse --abbrev-ref HEAD').toString().trim()}`);
-	// }
+	if (autoPush) {
+		execSync(`git commit ${versionPath} -m 自动提交版本信息`);
+		execSync(`git push origin ${execSync('git rev-parse --abbrev-ref HEAD').toString().trim()}`);
+	}
 }
 console.log('4444444444444444444444444444');
 
