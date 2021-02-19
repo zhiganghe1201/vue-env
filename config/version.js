@@ -17,7 +17,7 @@ if (fs.existsSync(versionPath)) {
 console.log(versionStr.indexOf(commitHash) != -1);
 // console.log(versionStr, 'version');
 // 根据版本信息是已存在commit，进行不同处理
-if (versionStr.indexOf(commitHash) != -1) {
+if (versionStr.indexOf(commitHash) == -1) {
 	console.warn('\x1B[33m%s\x1b[0m', 'warming: 当前的git版本数据已经存在了!\n');
 } else {
 	// git 最后一次提交的 HEAD
@@ -51,9 +51,10 @@ if (versionStr.indexOf(commitHash) != -1) {
 	console.log(execSync('git rev-parse --abbrev-ref HEAD').toString().trim(), 'sdsdsdsd');
 	// 写入版本信息之后，自动将版本信息提交到当前分支的git上
 	if (autoPush) {
-		execSync(`git add ${versionPath}`);
-		execSync('git commit -m docs:自动提交版本信息');
-		execSync(`git push origin ${execSync('git rev-parse --abbrev-ref HEAD').toString().trim()}`);
+		console.log('-=-=');
+		execSync('git add .');
+		execSync('git commit -m "docs: 自动提交版本信息"');
+		execSync('git push');
 	}
 }
 console.log('4444444444444444444444444444');
