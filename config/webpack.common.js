@@ -33,7 +33,7 @@ const webpackCommonConfig = {
 		filename: `${DIR_PATH}js/[name].[hash:8].bundle.js`,
 		chunkFilename: `${DIR_PATH}js/[name].[hash:8].chunk.js`,
 		sourceMapFilename: `${DIR_PATH}js/[name].[hash:8].bundle.map`,
-		// publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
+		publicPath: ENV_IS_DEV ? '/' : '/' // 部署时 页面 引用的路径 如 https://www.test.com/demo/
 	},
 	// 路径重定向
 	resolve: {
@@ -46,7 +46,7 @@ const webpackCommonConfig = {
 			'@common': path.resolve(APP_ROOT, './src/pages/components/_common'),
 			'@constants': path.resolve(APP_ROOT, './src/pages/constants'),
 			'@containers': path.resolve(APP_ROOT, './src/pages/containers'),
-			'@utils': path.resolve(APP_ROOT, './src/pages/utils'),
+			'@utils': path.resolve(APP_ROOT, './src/utils'),
 			'@stores': path.resolve(APP_ROOT, './src/stores'),
 		},
 	},
@@ -175,7 +175,7 @@ const webpackCommonConfig = {
 		noEmitOnErrors: true,
 		namedModules: true,
 	},
-	cache: true, // 启用编译缓存
+	// cache: true, // 启用编译缓存
 };
 
 module.exports = {

@@ -1,0 +1,14 @@
+
+		commitHash: e42a57ecc852f7ee2f5bb06145693df4cd296d8a
+		commitUserName: hezhigang
+		commitUserEmail: hezhigang@hezhigangdeMacBook-Pro.local
+		commitMessage: chore: 构建步骤优化
+		commitDate: 2020-12-10 16:11
+		gitRemoteAddress: https://github.com/zhiganghe1201/vue-env.git (fetch)
+		buildUserName: 何志刚
+		buildUserEmail: zhiganghe1201@outlook.com
+		buildBranch:develop
+		buildDate: 2021-2-19 15:57
+		
+*******************************************************************************
+		

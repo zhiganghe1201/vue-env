@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "build": "npm run prompt:dist && cross-env NODE_ENV=production webpack --profile --progress --hide-modules --config ./config/webpack.prod.js",
+    "build": "npm run prompt:dist && cross-env NODE_ENV=production webpack --profile --progress --hide-modules --config ./config/webpack.prod.js && node ./config/version.js",
     "dev": "npm run prompt:dev && cross-env NODE_ENV=development webpack-dev-server --open --profile --progress --config ./config/webpack.dev.js",
     "test:unit": "vue-cli-service test:unit",
     "precommit": "lint-staged",
@@ -74,6 +74,7 @@
     "ant-design-vue": "^1.7.1",
     "axios": "^0.20.0",
     "echarts": "^4.9.0",
+    "element-ui": "^2.14.1",
     "lodash": "^4.17.20",
     "moment": "^2.28.0",
     "resize-detector": "^0.2.2",
