@@ -12,8 +12,6 @@ import Echarts from '@common/echarts';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import antInputDirective from 'ant-design-vue/es/_util/antInputDirective';
 import Antd from '@components/ant-design';
-import { URL } from '@utils/url';
-import { getLoginInfo } from '@utils/auth/index';
 import Directives from '../pages/extends/directives';
 import { routesDev } from './routers.dev';
 import { routesDist } from './routers.dist';
@@ -52,56 +50,56 @@ const store = new Vuex.Store(storeConfig);
 
 Vue.use(Router);
 let routes = [{
-	path: '/',
-	name: 'layout',
-	component: Layout,
-	children: [],
-	redirect: '/tasklist',
+  path: '/',
+  name: 'layout',
+  component: Layout,
+  children: [],
+  redirect: '/tasklist',
 },
 {
-	path: '*',
-	name: '404',
-	component: notFound
+  path: '*',
+  name: '404',
+  component: notFound
 }];
 
 let children = [];
 if (isDev) {
-	children = routesDev;
+  children = routesDev;
 } else {
-	children = routesDist;
+  children = routesDist;
 }
 
 routes[0].children = children;
 
 export const router = new Router({
-	// mode: 'history',
-	routes
+  // mode: 'history',
+  routes
 });
 
 sync(store, router);
 
 const app = new Vue({
-	data: {
-		locale: zhCN,
-	},
-	store,
-	router,
-	render(h) {
-		return h(
-			'cci-config-provider', // 国际化配置 让类似DatePicker 的组件显示中文
-			{
-				props: {
-					locale: this.locale,
-				}
-			},
-			[
-				<div id="app">
-					<router-view></router-view>
-				</div>
-			]
+  data: {
+    locale: zhCN,
+  },
+  store,
+  router,
+  render(h) {
+    return h(
+      'cci-config-provider', // 国际化配置 让类似DatePicker 的组件显示中文
+      {
+        props: {
+          locale: this.locale,
+        }
+      },
+      [
+        <div id="app">
+          <router-view></router-view>
+        </div>
+      ]
 
-		);
-	}
+    );
+  }
 }).$mount('#app');
 
 globalThis.app = app;

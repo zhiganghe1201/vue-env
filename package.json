@@ -39,6 +39,7 @@
     "cssnano": "^4.1.10",
     "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-vue": "^6.1.2",

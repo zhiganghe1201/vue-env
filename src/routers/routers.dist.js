@@ -5,9 +5,9 @@ import { taskListConfig } from '@containers/taskList/app.js';
 import { taskMaintainConfig } from '@containers/taskMaintain/app.js';
 
 export const routesDist = [
-	...adviceConfig,
-	...approvalListConfig,
-	...notFoundConfig,
-	...taskListConfig,
-	...taskMaintainConfig
+  ...adviceConfig,
+  ...approvalListConfig,
+  ...notFoundConfig,
+  ...taskListConfig,
+  ...taskMaintainConfig
 ];

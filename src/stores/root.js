@@ -6,7 +6,7 @@ import modules from './modules/root';
 const debug = process.env.NODE_ENV !== 'production';
 
 export const storeConfig = {
-	strict: debug,
-	plugins: debug ? [createLogger()] : [],
-	modules
+  strict: debug,
+  plugins: debug ? [createLogger()] : [],
+  modules
 };

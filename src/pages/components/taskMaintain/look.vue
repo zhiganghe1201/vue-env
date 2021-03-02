@@ -1,35 +1,24 @@
 <template>
-	<div class="task-maintain-look">
-		查看
-	</div>
+  <div class="task-maintain-look">查看</div>
 </template>
 
 <script>
 export default {
-	name: 'task-maintain-look',
+  name: 'SingleMaintainLook',
 
-	data() {
-		return {
+  data() {
+    return {};
+  },
+  computed: {},
+  watch: {},
+  mounted() {},
 
-		};
-	},
+  methods: {
+    
+  },
 
-	computed: {
-
-	},
-	watch: {
-
-	},
-	mounted() {
-
-	},
-
-	methods: {
-
-	},
 };
 </script>
 
 <style lang='scss'>
-
 </style>

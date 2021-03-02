@@ -1,38 +1,29 @@
 <template>
-	<div>
-		<slot />
-	</div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 export default {
-	name: 'set-tittle',
-	props: {
-		title: String,
-	},
+  name: 'SetTittle',
+  props: {
+    title: String
+  },
 
-	data() {
-		return {
+  data() {
+    return {};
+  },
 
-		};
-	},
+  computed: {},
+  watch: {},
+  mounted() {
+    document.title = this.title || document.title;
+  },
 
-	computed: {
-
-	},
-	watch: {
-
-	},
-	mounted() {
-		document.title = this.title || document.title;
-	},
-
-	methods: {
-
-	},
+  methods: {}
 };
 </script>
 
 <style lang='scss'>
-
 </style>

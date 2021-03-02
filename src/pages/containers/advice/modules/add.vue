@@ -1,39 +1,28 @@
 <template>
-	<set-title title="新增建议">
-		<c-advice-add />
-	</set-title>
+  <set-title title="新增建议">
+    <c-advice-add />
+  </set-title>
 </template>
 
 <script>
 import Main from '@components/advice/add';
 
 export default {
-	name: 'advice-add',
-	components: {
-		'c-advice-add': Main
-	},
-	data() {
-		return {
+  name: 'AdviceAdd',
+  components: {
+    'c-advice-add': Main
+  },
+  data() {
+    return {};
+  },
 
-		};
-	},
+  computed: {},
+  watch: {},
+  mounted() {},
 
-	computed: {
-
-	},
-	watch: {
-
-	},
-	mounted() {
-
-	},
-
-	methods: {
-
-	},
+  methods: {}
 };
 </script>
 
 <style lang='scss'>
-
 </style>

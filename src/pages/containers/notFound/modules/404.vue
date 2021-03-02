@@ -1,39 +1,28 @@
 <template>
-	<set-title title="404">
-		<c-404 />
-	</set-title>
+  <set-title title="404">
+    <c-404 />
+  </set-title>
 </template>
 
 <script>
 import NotFound from '@components/not-found/404';
 
 export default {
-	name: 'not-found',
-	components: {
-		'c-404': NotFound
-	},
-	data() {
-		return {
+  name: 'NotFound',
+  components: {
+    'c-404': NotFound
+  },
+  data() {
+    return {};
+  },
 
-		};
-	},
+  computed: {},
+  watch: {},
+  mounted() {},
 
-	computed: {
-
-	},
-	watch: {
-
-	},
-	mounted() {
-
-	},
-
-	methods: {
-
-	},
+  methods: {}
 };
 </script>
 
 <style lang='scss'>
-
 </style>

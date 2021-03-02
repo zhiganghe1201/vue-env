@@ -1,39 +1,28 @@
 <template>
-	<set-title title="决策建议">
-		<c-advice-list />
-	</set-title>
+  <set-title title="决策建议">
+    <c-advice-list />
+  </set-title>
 </template>
 
 <script>
 import Main from '@components/advice/main';
 
 export default {
-	name: 'advice-list',
-	components: {
-		'c-advice-list': Main
-	},
-	data() {
-		return {
+  name: 'AdviceList',
+  components: {
+    'c-advice-list': Main
+  },
+  data() {
+    return {};
+  },
 
-		};
-	},
+  computed: {},
 
-	computed: {
-
-	},
-	watch: {
-
-	},
-	mounted() {
-
-	},
-
-	methods: {
-
-	},
+  watch: {},
+  mounted() {},
+  methods: {}
 };
 </script>
 
 <style lang='scss'>
-
 </style>

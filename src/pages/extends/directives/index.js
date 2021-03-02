@@ -2,14 +2,14 @@ import copy from './copy';
 
 
 const directives = {
-	copy,
+  copy,
 
 };
 
 export default {
-	install(Vue) {
-		Object.keys(directives).forEach(key => {
-			Vue.directive(key, directives[key]);
-		});
-	}
+  install(Vue) {
+    Object.keys(directives).forEach(key => {
+      Vue.directive(key, directives[key]);
+    });
+  }
 };
