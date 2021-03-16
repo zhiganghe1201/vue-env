@@ -1,9 +1,42 @@
-
-@import 'core/index';
+@import "core/index";
 
 .g-m-b-40 {
 	margin-bottom: 40px !important;
 }
+
 .g-c-main {
 	color: $main !important;
+}
+
+.g-link-text {
+	@extend .g-c-main;
+	@extend .g-pointer;
+}
+
+.g-c-red {
+	color: #c72a29;
+}
+
+.g-w-64 {
+	width: 64px !important;
+}
+.g-w-80 {
+	width: 80px !important;
+}
+.g-w-160 {
+	width: 160px !important;
+}
+.g-w-180 {
+	width: 180px !important;
+	display: inline-block;
+}
+.g-w-200 {
+	width: 200px !important;
+	display: inline-block;
+}
+.g-w-240 {
+	width: 240px !important;
+}
+.g-w-300 {
+	width: 300px !important;
 }

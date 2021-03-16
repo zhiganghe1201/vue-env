@@ -1,4 +1,4 @@
 const api = {
-	WULING_LOGIN_GET: ''
+  WULING_LOGIN_GET: '/api/demo'
 };
 export default api;

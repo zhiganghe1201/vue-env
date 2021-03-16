@@ -1,9 +1,9 @@
-import hzcity from './hzcity/root';
+import hzcity from './taskList/root';
 import wuling from './wuling/root';
-import baiyang from './baiyang/root';
+import baiyang from './taskMaintain/root';
 
 export default {
-	...hzcity,
-	...wuling,
-	...baiyang
+  ...hzcity,
+  ...wuling,
+  ...baiyang
 };
