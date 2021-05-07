@@ -54,7 +54,7 @@ let routes = [{
   name: 'layout',
   component: Layout,
   children: [],
-  redirect: '/tasklist',
+  redirect: '/advice',
 },
 {
   path: '*',
