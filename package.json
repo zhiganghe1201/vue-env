@@ -76,7 +76,7 @@
     "axios": "^0.20.0",
     "echarts": "^4.9.0",
     "element-ui": "^2.14.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "moment": "^2.28.0",
     "resize-detector": "^0.2.2",
     "vue": "^2.6.10",
